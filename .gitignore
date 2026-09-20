@@ -11,7 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
-package-lock.json
+
+# package-lock.json is intentionally committed so installs are reproducible.
+# (The medplum-hello-world starter ignored it; we do not.)
 
 # Editor directories and files
 .vscode/*

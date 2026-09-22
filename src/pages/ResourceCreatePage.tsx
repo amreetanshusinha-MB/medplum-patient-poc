@@ -4,12 +4,13 @@ import { Stack, Text } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { createReference, normalizeErrorString, normalizeOperationOutcome } from '@medplum/core';
 import type { OperationOutcome, Patient, Resource, ResourceType } from '@medplum/fhirtypes';
-import { Document, Loading, useMedplum, ResourceForm } from '@medplum/react';
+import { Loading, useMedplum, ResourceForm } from '@medplum/react';
 import { useEffect, useState } from 'react';
 import type { JSX } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { usePatient } from '../hooks/usePatient';
 import { prependPatientPath } from './patient/PatientPage.utils';
+import { Page } from '../components/ui/Page';
 
 const PatientReferencesElements: Partial<Record<ResourceType, string[]>> = {
   Task: ['for'],
@@ -99,11 +100,11 @@ export function ResourceCreatePage(): JSX.Element {
   }
 
   return (
-    <Document shadow="xs">
+    <Page>
       <Stack>
         <Text fw={500}>New&nbsp;{resourceType}</Text>
         <ResourceForm defaultValue={defaultValue} onSubmit={handleSubmit} outcome={outcome} />
       </Stack>
-    </Document>
+    </Page>
   );
 }

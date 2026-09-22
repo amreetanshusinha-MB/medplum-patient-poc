@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
-import { MantineProvider, createTheme } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { MedplumClient } from '@medplum/core';
 import { MedplumProvider } from '@medplum/react';
@@ -9,29 +9,11 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
 import { App } from './App';
+import { cssVariablesResolver, theme } from './theme';
 
 const medplum = new MedplumClient({
   onUnauthenticated: () => (window.location.href = '/'),
   baseUrl: import.meta.env.MEDPLUM_BASE_URL,
-});
-
-const theme = createTheme({
-  headings: {
-    sizes: {
-      h1: {
-        fontSize: '1.125rem',
-        fontWeight: '500',
-        lineHeight: '2.0',
-      },
-    },
-  },
-  fontSizes: {
-    xs: '0.6875rem',
-    sm: '0.875rem',
-    md: '0.875rem',
-    lg: '1.0rem',
-    xl: '1.125rem',
-  },
 });
 
 const container = document.getElementById('root') as HTMLDivElement;
@@ -40,7 +22,7 @@ root.render(
   <StrictMode>
     <BrowserRouter>
       <MedplumProvider medplum={medplum}>
-        <MantineProvider theme={theme}>
+        <MantineProvider theme={theme} cssVariablesResolver={cssVariablesResolver}>
           <App />
         </MantineProvider>
       </MedplumProvider>

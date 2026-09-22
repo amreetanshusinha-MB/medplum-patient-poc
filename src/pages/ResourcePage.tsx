@@ -3,10 +3,11 @@
 import { Title } from '@mantine/core';
 import { getDisplayString, getReferenceString } from '@medplum/core';
 import type { Resource, ResourceType } from '@medplum/fhirtypes';
-import { Document, ResourceTable, useMedplum } from '@medplum/react';
+import { ResourceTable, useMedplum } from '@medplum/react';
 import { useEffect, useState } from 'react';
 import type { JSX } from 'react';
 import { useParams } from 'react-router';
+import { Page } from '../components/ui/Page';
 
 /**
  * This is an example of a generic "Resource Display" page.
@@ -32,9 +33,9 @@ export function ResourcePage(): JSX.Element | null {
   }
 
   return (
-    <Document key={getReferenceString(resource)}>
+    <Page>
       <Title>{getDisplayString(resource)}</Title>
       <ResourceTable key={`${resourceType}/${id}`} value={resource} />
-    </Document>
+    </Page>
   );
 }

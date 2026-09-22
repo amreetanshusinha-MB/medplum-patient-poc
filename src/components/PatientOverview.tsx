@@ -1,9 +1,11 @@
 // SPDX-FileCopyrightText: Copyright Orangebot, Inc. and Medplum contributors
 // SPDX-License-Identifier: Apache-2.0
 import { Title } from '@mantine/core';
-import { Document, ResourceTable } from '@medplum/react';
+import { ResourceTable } from '@medplum/react';
 import type { JSX } from 'react';
 import { useParams } from 'react-router';
+import { ClinicalSummary } from './ClinicalSummary';
+import { Page } from './ui/Page';
 
 /*
  * You can combine Medplum components with plain HTML to quickly display patient data.
@@ -16,11 +18,12 @@ import { useParams } from 'react-router';
 export function PatientOverview(): JSX.Element {
   const { id } = useParams();
   return (
-    <Document>
+    <Page>
       <Title order={3} mb="xl">
         Patient Overview
       </Title>
+      <ClinicalSummary />
       <ResourceTable value={{ reference: `Patient/${id}` }} />
-    </Document>
+    </Page>
   );
 }

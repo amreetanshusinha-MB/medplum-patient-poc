@@ -24,7 +24,7 @@
     "@mantine/spotlight": "8.3.18",
     "@medplum/core": "5.1.39",
     "@medplum/eslint-config": "5.1.39",
-    "@medplum/fhirtypes": "5.1.39",
+    "@medplum/fhirtypes": "5.2.3",
     "@medplum/react": "5.1.39",
     "@tabler/icons-react": "3.46.0",
     "@types/node": "22.20.2",
